@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>Lista de Hoteles</h1>
+        <h1>Lista de Hoteless</h1>
         <ul>
             <li v-for="hotel in hotels" :key="hotel.id">
                 <h2>{{ hotel.id }}</h2>
