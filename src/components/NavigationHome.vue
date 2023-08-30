@@ -1,7 +1,7 @@
 <template>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <router-link to="/" class="navbar-brand">Hoteles</router-link> 
+            <router-link to="/" class="navbar-brand nav-title">Hoteles</router-link>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -9,10 +9,10 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
-                        <router-link to="/" class="nav-link">Home</router-link> 
+                        <router-link to="/" class="nav-link">Home</router-link>
                     </li>
                     <li class="nav-item">
-                        <router-link to="nuevo-hotel" class="nav-link">nuevo-hotel</router-link> 
+                        <router-link to="nuevo-hotel" class="nav-link">nuevo-hotel</router-link>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Servicios</a>
@@ -28,6 +28,12 @@
 
 <script>
 export default {
-  name: 'NavigationHome',
+    name: 'NavigationHome',
 }
 </script>
+
+<style>
+.nav-title {
+    color: #42b983;
+}
+</style>

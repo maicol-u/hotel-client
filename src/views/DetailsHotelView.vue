@@ -9,12 +9,35 @@
             <p class="card-text"><strong>NIT:</strong> {{ hotel.nit }}</p>
             <div class="btn-group">
                 <button class="btn btn-primary" @click="editHotel">Editar</button>
-                <button class="btn btn-danger" @click=" confirmDeleteHotel">Eliminar</button>
+                <button class="btn btn-danger" @click="confirmDeleteHotel">Eliminar</button>
             </div>
         </div>
     </div>
     <div>
-        <AssingRooms />
+        <AssingRooms :hotel_id="id" />
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Lista de habitaciones</h5>
+            <table class="table table-dark">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Tipo</th>
+                        <th scope="col">Acomodacion</th>
+                        <th scope="col">Numero habitaciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="room in hotel.rooms" :key="room.id">
+                        <th> {{ hotel.rooms.id }} </th>
+                        <td> {{ room.type_id }} </td>
+                        <td> {{ room.accommodation_id }} </td>
+                        <td> {{ room.quantity }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </template>
   
@@ -39,7 +62,7 @@ export default {
     methods: {
         async getHotel(id) {
             const service = new HotelService();
-            service.getHotebyId(id).then((response)=>{
+            service.getHotebyId(id).then((response) => {
                 this.hotel = response.data;
             });
         },
@@ -53,16 +76,16 @@ export default {
                 cancelButtonColor: '#d33',
                 confirmButtonText: 'Si, borrar'
             }).then((result) => {
-                if(result.isConfirmed){
+                if (result.isConfirmed) {
                     this.deleteHotel(this.id)
                 }
             })
         },
-        
-        deleteHotel(id){
+
+        deleteHotel(id) {
             const service = new HotelService();
-            service.deleteHotel(id).then((response)=>{
-                if(response.status == 200)  this.$swal.fire('Mensaje', "Hotel Eliminado", 'success')
+            service.deleteHotel(id).then((response) => {
+                if (response.status == 200) this.$swal.fire('Mensaje', "Hotel Eliminado", 'success')
             });
         },
 
