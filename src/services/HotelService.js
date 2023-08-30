@@ -23,4 +23,20 @@ export default class HotelService {
         return data;
     }
 
+    async saveHotel(hotelData){
+        console.log(JSON.stringify(hotelData));
+        const response = await fetch(`${this.baseUrl}/hotel`,
+        {
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            method: "POST",
+            body: JSON.stringify(hotelData)
+        });
+
+        return response;
+       
+    }
+
 }
