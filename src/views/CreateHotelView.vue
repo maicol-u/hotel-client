@@ -52,8 +52,8 @@ export default {
 
         submitForm() {
             const hotelService = new HotelService();
-            hotelService.saveHotel(this.hotel).then((response) => {
-                console.log(response);
+            hotelService.saveHotel(this.hotel).then(() => {
+                this.$router.push('/', );
             });
         }
     }

@@ -17,14 +17,13 @@ export default class HotelService {
           }
     }
 
-    async fetchHotelDetails(hotelId) {
+    async getHotebyId(hotelId) {
         const response = await fetch(`${this.baseUrl}/hotel/${hotelId}`);
         const data = await response.json();
         return data;
     }
 
     async saveHotel(hotelData){
-        console.log(JSON.stringify(hotelData));
         const response = await fetch(`${this.baseUrl}/hotel`,
         {
             headers: {
@@ -36,7 +35,17 @@ export default class HotelService {
         });
 
         return response;
-       
+    }
+
+    async deleteHotel(id){
+        const response = await fetch(`${this.baseUrl}/hotel/${id}`, {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+              },
+              method: "DELETE",
+        })
+        return response;
     }
 
 }
