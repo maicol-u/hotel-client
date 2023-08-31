@@ -37,7 +37,6 @@ export default {
         this.id = this.$route.params.id
     },
     mounted() {
-       
         this.getHotel(this.id)
     },
     methods: {
@@ -74,7 +73,7 @@ export default {
         },
 
         editHotel() {
-            // Lógica para editar el hotel
+            this.$router.push({name: 'hotel-edit'});
         }
     }
 };

@@ -37,6 +37,21 @@ export default class HotelService {
         return response;
     }
 
+    async editHotel(hotelData, id){
+        const response = await fetch(`${this.baseUrl}/hotel/${id}`,
+        {
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            method: "PUT",
+            body: JSON.stringify(hotelData)
+        });
+
+        return response;
+    }
+
+
     async deleteHotel(id){
         const response = await fetch(`${this.baseUrl}/hotel/${id}`, {
             headers: {
