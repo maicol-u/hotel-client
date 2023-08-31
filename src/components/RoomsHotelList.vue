@@ -17,7 +17,7 @@
                         <td> {{ room.accommodation.name }} </td>
                         <td> {{ room.quantity }}</td>
                         <td>
-                            
+                            <button @click="deleteRoomHotel(room.id)" class="btn btn-danger btn-sm">Eliminar</button>
                         </td>
                     </tr>
                 </tbody>
@@ -27,9 +27,21 @@
 </template>
 
 <script>
+import RoomService from '@/services/RoomService';
+
 export default {
     props: {
-        rooms: Object
-    }
+        rooms: Object,
+        getHotelRooms: Function
+    },
+    methods: {
+        deleteRoomHotel(id){
+            const roomService = new RoomService();
+            roomService.deleteRoomHotel(id).then((response)=>{
+                this.$swal.fire('Mensaje', response.message, 'success')
+                this.getHotelRooms();
+            });
+        }
+    },
 }
 </script>

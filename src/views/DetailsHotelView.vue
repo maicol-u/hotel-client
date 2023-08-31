@@ -33,8 +33,11 @@ export default {
             hotel: []
         }
     },
-    mounted() {
+    created(){
         this.id = this.$route.params.id
+    },
+    mounted() {
+       
         this.getHotel(this.id)
     },
     methods: {
@@ -63,7 +66,10 @@ export default {
         deleteHotel(id) {
             const service = new HotelService();
             service.deleteHotel(id).then((response) => {
-                if (response.status == 200) this.$swal.fire('Mensaje', "Hotel Eliminado", 'success')
+                if (response.status == 200){
+                    this.$swal.fire('Mensaje', "Hotel Eliminado", 'success')
+                    this.$router.push({ name: 'home' });
+                } else this.$swal.fire('Mensaje', "No se puede elimiar este hotel, intente borrar primero sus habitaciones", 'error')
             });
         },
 

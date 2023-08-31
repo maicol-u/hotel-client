@@ -40,7 +40,7 @@
         </div>
     </div>
     <div>
-        <RoomsHotelList :rooms="this.rooms"/>
+        <RoomsHotelList :rooms="this.rooms" :getHotelRooms="getHotelRooms"/>
     </div>
 </template>
 
@@ -76,7 +76,7 @@ export default {
         this.roomService = new RoomService();
         this.getAllTypes();
         this.getHotelRooms();
-        console.log(this.hotel_id) 
+        
     },
     methods: {
         async getAllTypes() {
@@ -99,10 +99,10 @@ export default {
 
         saveRoom(room) {
             this.roomService.saveRoomByHotel(room).then((response) => {
-                if (response.status == 201){
+                if (response.message == 'Room was created'){
                     this.$swal.fire('Mensaje', "Tipo de habitacion creada", 'success');
                     this.getHotelRooms();
-                } 
+                } else this.$swal.fire('Mensaje', response.message, 'error');
             });
         },
 

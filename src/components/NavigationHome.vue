@@ -12,13 +12,7 @@
                         <router-link to="/" class="nav-link">Home</router-link>
                     </li>
                     <li class="nav-item">
-                        <router-link to="nuevo-hotel" class="nav-link">nuevo-hotel</router-link>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Servicios</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contacto</a>
+                        <router-link to="nuevo-hotel" class="nav-link">Huevo hotel</router-link>
                     </li>
                 </ul>
             </div>

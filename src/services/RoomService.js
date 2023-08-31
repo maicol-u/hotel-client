@@ -25,7 +25,18 @@ export default class RoomService {
             },
             body: JSON.stringify(room)
         });
-        return response;
+        return response.json();
+    }
+
+    async deleteRoomHotel(id){
+        const response = await fetch(`${this.baseUrl}/room/${id}`,{
+            method: "DELETE",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+              },
+        });
+        return response.json();
     }
 
 }
