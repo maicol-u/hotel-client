@@ -16,29 +16,7 @@
     <div>
         <AssingRooms :hotel_id="id" />
     </div>
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">Lista de habitaciones</h5>
-            <table class="table table-dark">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Tipo</th>
-                        <th scope="col">Acomodacion</th>
-                        <th scope="col">Numero habitaciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="room in hotel.rooms" :key="room.id">
-                        <th> {{ hotel.rooms.id }} </th>
-                        <td> {{ room.type_id }} </td>
-                        <td> {{ room.accommodation_id }} </td>
-                        <td> {{ room.quantity }}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
+    
 </template>
   
 <script>

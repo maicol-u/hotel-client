@@ -6,8 +6,8 @@ export default class RoomService {
         this.baseUrl = BASE_URL;
     }
 
-    async getRoomsByHotel() {
-        const response = await fetch(`${this.baseUrl}/room`,{
+    async getRoomsByHotel(id) {
+        const response = await fetch(`${this.baseUrl}/hotel/${id}/rooms`,{
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'

@@ -39,15 +39,19 @@
             </div>
         </div>
     </div>
+    <div>
+        <RoomsHotelList :rooms="this.rooms"/>
+    </div>
 </template>
 
 <script>
 import TypeService from '@/services/TypeService';
 import AccomodationService from '@/services/AccommodationService';
 import RoomService from '@/services/RoomService';
-
+import RoomsHotelList from './RoomsHotelList.vue';
 
 export default {
+    components: { RoomsHotelList },
     props: ['hotel_id'],
     data() {
         return {
@@ -61,14 +65,18 @@ export default {
                 hotel_id: "",
                 type_id: "",
                 accommodation_id: ""
-            }
+            },
+            rooms: []
         }
     },
+    
     mounted() {
         this.typeService = new TypeService();
         this.acomService = new AccomodationService();
         this.roomService = new RoomService();
         this.getAllTypes();
+        this.getHotelRooms();
+        console.log(this.hotel_id) 
     },
     methods: {
         async getAllTypes() {
@@ -91,7 +99,17 @@ export default {
 
         saveRoom(room) {
             this.roomService.saveRoomByHotel(room).then((response) => {
-                if (response.status == 201) this.$swal.fire('Mensaje', "Tipo de habitacion creada", 'success');
+                if (response.status == 201){
+                    this.$swal.fire('Mensaje', "Tipo de habitacion creada", 'success');
+                    this.getHotelRooms();
+                } 
+            });
+        },
+
+        getHotelRooms() {
+            
+            this.roomService.getRoomsByHotel(this.hotel_id).then((response) => {
+                this.rooms = response.data;
             });
         }
     }
