@@ -1,3 +1,3 @@
-const BASE_URL = 'https://hotel-api-production.up.railway.app/api';
+const BASE_URL = 'http://localhost:8000/api';
 
 export default BASE_URL;

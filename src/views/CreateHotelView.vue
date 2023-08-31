@@ -52,8 +52,9 @@ export default {
 
         submitForm() {
             const hotelService = new HotelService();
-            hotelService.saveHotel(this.hotel).then(() => {
-                this.$router.push('/', );
+            hotelService.saveHotel(this.hotel).then((response) => {
+                if(response.status == 422) this.$swal.fire('Mensaje', "No se puede repetir el hotel", 'error');
+                else this.$router.push('/', );
             });
         }
     }
