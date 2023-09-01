@@ -60,7 +60,7 @@ export default {
         submitForm() {
             const hotelService = new HotelService();
             hotelService.editHotel(this.hotel, this.id).then((response) => {
-                if(response.status == 422) this.$swal.fire('Mensaje', "No se puede repetir el hotel", 'error');
+                if(response.status != 200) this.$swal.fire('Mensaje', "Error al actualizar el hotel, verifique que el numero de habitaciones no sea inferior a las creadas", 'error');
                 else{
                     this.$swal.fire('Mensaje', "El hotel ha sido actualizado", 'success');
                     this.$router.push('/hotel/'+this.id, );
